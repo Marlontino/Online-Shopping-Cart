@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "ItemToPurchase.h"
 #include "ShoppingCart.h"
 
@@ -11,6 +12,34 @@ void PrintMenu() {
    printf("i - Output items' descriptions\n");
    printf("o - Output shopping cart\n");
    printf("q - Quit\n");
+}
+
+void ExecuteMenu(char userChoice, ShoppingCart cart) {
+   if (userChoice == 'a') {
+
+   }
+   else if (userChoice == 'r') {
+      
+   }
+   else if (userChoice == 'c') {
+      
+   }
+   else if (userChoice == 'i') {
+      
+   }
+   else if (userChoice == 'o') {
+      
+   }
+   else if (userChoice == 'q') {
+      printf("\n");
+      exit(0);
+   }
+   else {
+      printf("\nChoose an option:");
+      scanf(" %c", &userChoice);
+      ExecuteMenu(userChoice, cart);
+   }
+
 }
 
 
@@ -32,16 +61,15 @@ int main(void) {
    printf("Today's Date: %s\n\n", currentDate);
 
 
-  // do {
+   do {
       PrintMenu();
-      printf("\nChoose an option:\n");
+      printf("\nChoose an option:");
       scanf(" %c", &menuChoice);
 
- //     if (menuChoice != 'q') {
-  //       cart = ExecuteMenu(menuChoice, cart);
-  //    }
- //  } while (menuChoice != 'q');
+      if (menuChoice != 'q') {
+         ExecuteMenu(menuChoice, cart);
+      }
+   } while (menuChoice != 'q');
 
    return 0;
 }
-

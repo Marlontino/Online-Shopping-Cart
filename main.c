@@ -25,10 +25,22 @@ void ExecuteMenu(char userChoice, ShoppingCart cart) {
       
    }
    else if (userChoice == 'i') {
-      
+      printf("OUTPUT ITEM'S DESCRIPTIONS\n");
+      PrintDescriptions(*cart);
    }
    else if (userChoice == 'o') {
-      
+      printf("OUTPUT SHOPPING CART\n");
+      printf("%s's Shopping Cart - %s\n", cart->customerName, cart->currentDate);
+      printf("Number of Items: %d\n\n", cart->cartSize);
+
+      if (cart->cartSize == 0) {
+       printf("SHOPPING CART IS EMPTY\n");
+      } else {
+         for (int i = 0; i < cart->cartSize; i++) {
+            printf("%s %d @ $%d = $%d\n\n", cart->cartItems[i].itemName, cart->cartItems[i].itemQuantity, cart->cartItems[i].itemPrice, cart->cartItems[i].itemPrice * cart->cartItems[i].itemQuantity);
+         }
+      }
+      printf("Total: $%d\n", GetCostOfCart(*cart));
    }
    else if (userChoice == 'q') {
       printf("\n");
@@ -69,6 +81,7 @@ int main(void) {
       if (menuChoice != 'q') {
          ExecuteMenu(menuChoice, cart);
       }
+      printf("\n");
    } while (menuChoice != 'q');
 
    return 0;

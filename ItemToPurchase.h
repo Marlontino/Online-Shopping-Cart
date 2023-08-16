@@ -1,15 +1,22 @@
-#ifndef ITEM_TO_PURCHASE_H
-#define ITEM_TO_PURCHASE_H
+#include<stdio.h>
+#include<string.h>
+
+#include "ItemToPurchase.h"
 
 /* Type your code here */
-typedef struct {
-    char itemName[50];
-    char itemDescription[50];
-    int itemPrice;
-    int itemQuantity;
-} ItemToPurchase;
+void MakeItemBlank(ItemToPurchase* item) {
+    if (item != NULL) {
+        item->itemPrice = 0;
+        item->itemQuantity = 0;
+        strcpy(item->itemName, "none");
+        strcpy(item->itemDescription, "none");
+    }
+}
 
-void MakeItemBlank(ItemToPurchase* item);
-void PrintItemCost(ItemToPurchase item);
-void PrintItemDescription(ItemToPurchase item);
-#endif
+void PrintItemCost(ItemToPurchase item) {
+    printf("%s %d @ $%d = $%d\n", item.itemName, item.itemQuantity, item.itemPrice, item.itemPrice * item.itemQuantity);
+}
+
+void PrintItemDescription(ItemToPurchase item) {
+    printf("%s: %s\n", item.itemName, item.itemDescription);
+}
